@@ -30,7 +30,7 @@ MAX_CONCURRENT_DOWNLOADS = 3
 MAX_FILE_SIZE_MB = 50
 FILE_TTL_SECONDS = 3600
 
-# ==================== 🚨 Cookie စာသားများ (ဒီနေရာမှာ ထည့်ထားပါတယ်) ====================
+# ==================== 🚨 Cookie စာသားများ ====================
 COOKIE_CONTENT = """# Netscape HTTP Cookie File
 # Generated for yt-dlp
 
@@ -293,13 +293,14 @@ async def process_single_link(context, user_id, url, choice, platform):
         try:
             if platform == "youtube":
                 if choice == "video":
-                    cmd = ["yt-dlp", "--cookies", "cookies.txt", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                    # 🚨 Format ကို best လို့ ပြောင်းထားပါတယ် (မည်သည့် Format မဆို ယူပြီး mp4 ပြောင်းမည်)
+                    cmd = ["yt-dlp", "--cookies", "cookies.txt", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
                     cmd = ["yt-dlp", "--cookies", "cookies.txt", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
             
             elif platform == "tiktok":
                 if choice == "video":
-                    cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                    cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
                     cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
             
@@ -311,7 +312,7 @@ async def process_single_link(context, user_id, url, choice, platform):
             
             else:
                 if choice == "video":
-                    cmd = ["yt-dlp", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                    cmd = ["yt-dlp", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
                     cmd = ["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
 
