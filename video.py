@@ -30,66 +30,6 @@ MAX_CONCURRENT_DOWNLOADS = 3
 MAX_FILE_SIZE_MB = 50
 FILE_TTL_SECONDS = 3600
 
-# ==================== 🚨 Cookie စာသားများ ====================
-COOKIE_CONTENT = """# Netscape HTTP Cookie File
-# Generated for yt-dlp
-
-.google.com	TRUE	/verify	TRUE	1810186771	SNID	ANBxh3hwC0Vski-aucdeaDIpfACib7zn1coQNFsdPLQkA1L6nC0ItfKdeP7nP4jCsJO_Kb4CpBDxYtXYY6yEPwYvpsko2FDAi_g
-.mozilla.org	TRUE	/	FALSE	1828935563	_ga_B9CY1C9VBC	GS2.1.s1794375394$o1$g1$t1794375563$j58$l0$h0
-.mozilla.org	TRUE	/	FALSE	1828935418	_ga	GA1.1.1077350213.1794375394
-.google.com	TRUE	/	TRUE	1810186771	NID	CosDCAESvQIBM9Agl5jpeVHNUWfrgZk630Z90Z7YG-h17essjzqVFW6WupDmCnzmZlakeu1ySOKwleJXDaStvUYS0j8RWv6yNFXkhpxusb0gs7joFlwx-H_paxcOrgSwM3o3EvglgA2HvqzEBWEI_u9ciHQhDFo_VjAMk07_7nbkseYiRDLcAefZ6nhSD0DNdAF2IZ1T_Kh9998c4oi8FpwEEq-VtJrv7rd_NYLwPeWGll_lTIct0_Mhn2AJckNFHjQp2I9Y1VzMNRBp1e8QDDAlQuTTc95_F91-MhhFUznyS0MKi8F6MFWdYO8w30kfMrWBfxWmMvDChjRn5OimMmsZja-VQUSalJ5xxcuPtN0Or9_PtusuXm0gnqs76JWYT61Fiy5v36FyIlFs0ejfHJAbQOf8d7QhdXbtGr_idHNjPPuX5ygBMkUBcEpCz_x0WRpQRPRHzEQ1VsqcKsrO5M_mDm9cgi84J5AfSA6BWl4NoHu6kKNbgSmoU9gx4R2P3ccfeRweJnsiSNQj7Qk
-.google.com	TRUE	/	FALSE	1809927621	SEARCH_SAMESITE	CgQIoKIB
-.google.com	TRUE	/	TRUE	1809927573	AEC	Aaa9EJqb-zveNASbkjje-QWUteDsIjrJ3sURLMGBuYRAeMLrff3ves-f9Q
-accounts.google.com	FALSE	/	TRUE	1828935615	__Host-GAPS	1:82kh4TaxeSTkJOBicMlfndwSeES871Cmed9kDNyJcXiHNzAm1Lo_pY5Xkzh71UYs0KLjGalGNBGfRuUOyCTT3CxaVlQrAQ:yelqi8unfPT1cPB7
-accounts.google.com	FALSE	/	TRUE	1796967593	OTZ	8867860_30_30__30_
-.google.com	TRUE	/	FALSE	1828935615	SID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevtAoVzULWnIc8HrFzHIQY1wACgYKAQMSARMSFQHGX2MiNjGd5FTR4agUYBkx5ToffhoVAUF8yKpY6VLwoyyPg-iQNT-Gdsab0076
-.google.com	TRUE	/	TRUE	1828935615	__Secure-1PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevW30sAM1c0i0AR9B0WFxBHgACgYKAVYSARMSFQHGX2MiVPcS3q0nbGZYQEdbHh0pcxoVAUF8yKrMIJfaBDbgzMQadQ4pAAdz0076
-.google.com	TRUE	/	TRUE	1828935615	__Secure-3PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdev2KBLp3CKadtoJj2FyvGroAACgYKAUMSARMSFQHGX2Mi2i5c9xQVVo3dXGX92nxKJBoVAUF8yKp7ejMDnHdEUOEI5kRBM6hw0076
-accounts.google.com	FALSE	/	TRUE	1828935621	LSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZUORIu4uCHBXt-HFJh36YlAACgYKAc0SARMSFQHGX2MisoACAvbb1TVk-v4UjThijRoVAUF8yKqIvRiTjDeNblZlLKITpzlR0076
-accounts.google.com	FALSE	/	TRUE	1828935621	__Host-1PLSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZaHrmsyLd8qTMaCXhrU23yAACgYKAdoSARMSFQHGX2MiEYqmWV5tHNo-bcqxDRl6FBoVAUF8yKqx_5EFT0r08nqfmFSTm1mK0076
-accounts.google.com	FALSE	/	TRUE	1828935621	__Host-3PLSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZUQwyl-FQWrZM7a4Z8TGHvAACgYKATgSARMSFQHGX2MirLCvg9wExlpLgtP-t8dQdhoVAUF8yKoSVVjonKPLZOnFs6o31Fml0076
-.google.com	TRUE	/	FALSE	1828935615	HSID	AnctyZHpoNeEJnwtG
-.google.com	TRUE	/	TRUE	1828935615	SSID	AiY3DLuAxu0ysakS8
-.google.com	TRUE	/	FALSE	1828935615	APISID	ZQ-nBH4RG7fx4LEl/AmdCv89Ix-ERTonZc
-.google.com	TRUE	/	TRUE	1828935615	SAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-.google.com	TRUE	/	TRUE	1828935615	__Secure-1PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-.google.com	TRUE	/	TRUE	1828935615	__Secure-3PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-accounts.google.com	FALSE	/	TRUE	1828935616	ACCOUNT_CHOOSER	AFx_qI5MkE6yRGe5DK0JLBoB9btGxNeMpP3I-FpQKh_9s3WpPbmYKAQzrvkfWJmsmrdcJjyGHD5bFGSpV9dUcnANMQY5pFGI2VcmOZysWXjqvYSSPjmvbOeVvVe7lb36vfKvzEIxxfGi
-accounts.google.com	FALSE	/	TRUE	1828935615	SMSV	ADHTe-DSwHsPQTAiuNChGvEczRvKZfIfKzZ110NGOKqFtZwfgHnzw7Dnggc5QwtxaU3TRDWGqbPtrm4M22-nBGDiduEK9-DVcMvYBpdeQJ1U7Hqy9Tty7c4
-.google.com	TRUE	/	FALSE	1825911720	SIDCC	APD_SKEULGGeT_yNksLNSdiYfxCjYQA2pp__Mad8sc93ZSvOB9q73wN2O60rBx0SUZo99Iq0zg
-.google.com	TRUE	/	TRUE	1825911720	__Secure-1PSIDCC	APD_SKEZtykMaTZrkP2m-d3nMd5ij8W7UcL5Q4mMefm454F8N1t6W5voBmw7VOeAqhNcgxNm
-.google.com	TRUE	/	TRUE	1825911720	__Secure-3PSIDCC	APD_SKHt1k0jSGRE5EsQvCFTK-mn3XCc9EnCJfAmGXUyV4lX7XwWgiRWTRup9x9hLUAbmlDQ
-gds.google.com	FALSE	/	TRUE	1796967619	OTZ	8867860_30_30__30_
-.youtube.com	TRUE	/	TRUE	1825913670	__Secure-1PSIDTS	sidts-CjUBnJZzamid0kxKdkZ90aUFh7nJ02U36ZYWEO5mCG1tYLcAzkw4z7bgKuRUM8Z4bQX34qPbmRAA
-.youtube.com	TRUE	/	TRUE	1825913670	__Secure-3PSIDTS	sidts-CjUBnJZzamid0kxKdkZ90aUFh7nJ02U36ZYWEO5mCG1tYLcAzkw4z7bgKuRUM8Z4bQX34qPbmRAA
-.youtube.com	TRUE	/	FALSE	1828935621	HSID	A3XZRTu4Qp0yGSDjZ
-.youtube.com	TRUE	/	TRUE	1828935621	SSID	Auic74DNzoRPKiU5L
-.youtube.com	TRUE	/	FALSE	1828935621	APISID	ZQ-nBH4RG7fx4LEl/AmdCv89Ix-ERTonZc
-.youtube.com	TRUE	/	TRUE	1828935621	SAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-.youtube.com	TRUE	/	TRUE	1828935621	__Secure-1PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-.youtube.com	TRUE	/	TRUE	1828935621	__Secure-3PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
-.youtube.com	TRUE	/	FALSE	1828935621	SID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevtAoVzULWnIc8HrFzHIQY1wACgYKAQMSARMSFQHGX2MiNjGd5FTR4agUYBkx5ToffhoVAUF8yKpY6VLwoyyPg-iQNT-Gdsab0076
-.youtube.com	TRUE	/	TRUE	1828935621	__Secure-1PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevW30sAM1c0i0AR9B0WFxBHgACgYKAVYSARMSFQHGX2MiVPcS3q0nbGZYQEdbHh0pcxoVAUF8yKrMIJfaBDbgzMQadQ4pAAdz0076
-.youtube.com	TRUE	/	TRUE	1828935621	__Secure-3PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdev2KBLp3CKadtoJj2FyvGroAACgYKAUMSARMSFQHGX2Mi2i5c9xQVVo3dXGX92nxKJBoVAUF8yKp7ejMDnHdEUOEI5kRBM6hw0076
-.youtube.com	TRUE	/	TRUE	1809927740	__Secure-YNID	CtoBCAUSjAEBDB6PDOT_Sedn9thNvINDCv2_ZcadDUGXYMnHreWkcU9vpORrmL4EEYyvqZsZK-EThPjb_4xOEFkdZqwWKP_oA9Cap27GMR_HS4qE7eYF4wLeCMIgxlwJAfVqv5enAPYCt2wGxsdrJIEpMxEGVI1WQIQmVgB64z62ALfX98mVpphk-n0Dw2vzLinslSgFMkUBHFj1au8Cfkt5MEhFt_LreeHdIoBYooQYrRnRWEbjJoJ6S12dAfeD2Gz5JSWnqhrzhY1MWLZoQNZE9gYh99EAUF0Hxg0
-.youtube.com	TRUE	/	FALSE	1825913670	SIDCC	APD_SKFvQbKl4phmHDvnNNEJmZjrAELxvw9Kv_YH0W13au_l6L86PvOBM_S4JNV-jCJHPzHC
-.youtube.com	TRUE	/	TRUE	1825913670	__Secure-1PSIDCC	APD_SKEByHOQ85rgGipJje63h6v3_atHK7uPFXBZeM8EqWtml2igiZapEIEjFaJkcJ-eI9w11A
-.youtube.com	TRUE	/	TRUE	1825913670	__Secure-3PSIDCC	APD_SKGirZWrEk-zBmGPyi7twws8Jn1hzFfOJm83075OoTupSWAJ3a6R7Gqac4Ds8mM3bdwp
-.youtube.com	TRUE	/	TRUE	1809929661	VISITOR_INFO1_LIVE	q5pXlvGVGc8
-.youtube.com	TRUE	/	TRUE	1809929661	VISITOR_PRIVACY_METADATA	CgJNTRIEGgAgCw%3D%3D
-.youtube.com	TRUE	/	TRUE	1828937666	PREF	f4=4000000&tz=Asia.Yangon
-.youtube.com	TRUE	/	TRUE	1828935748	LOGIN_INFO	AFmmF2swRgIhAN4KHpBKnhZzMnOKdWgsDLp9tCAiyqeqWAER1Dpf60g4AiEAnriTTQBND5dOgWPPgmEFOd2m_T9ayiEe2GIU4BJPLbg:QUQ3MjNmeVVOaVBJQlFEZHJrNkRiQkRiYzFqbHBPMUZHdmdfSDFoZnMxZUZXN05sZktVSnpkNXhobXJyVlJDb01CMFFEaGkwR00yUzN2dlZWVkdGM3QxWTdyR2ZyT2gxZU9FS19wdFd3azN1X1pvUXlIMF95MEtoMnYyU1c4S0IwSnBValBvay1xMV9FS0ptekhmemNzTlhxc1BLSF9vaTVn
-.youtube.com	TRUE	/	TRUE	0	YSC	n_nFJQgTIKw"""
-
-# 🚨 Cookie ဖိုင်ကို အလိုအလျောက် ဆောက်ပေးမည့် Function
-def create_cookie_file():
-    try:
-        with open("cookies.txt", "w", encoding="utf-8") as f:
-            f.write(COOKIE_CONTENT)
-        print("✅ cookies.txt ဖိုင် ဆောက်ပြီးပါပြီ။")
-    except Exception as e:
-        print(f"⚠️ Cookie ဖိုင် ဆောက်မရပါ: {e}")
-
 # ==================== Runtime State ====================
 user_links = defaultdict(list)
 user_platform = {} 
@@ -166,7 +106,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "👋 မင်္ဂလာပါ!\n\n"
         "📌 **Video/MP3 ဒေါင်းလုဒ်လုပ်ရန် လမ်းညွှန်**\n"
-        "1️⃣ ဒေါင်းလုဒ်လုပ်ချင်တဲ့ YouTube, TikTok သို့မဟုတ် Facebook link ကို ဒီ chat ထဲပို့ပါ။\n"
+        "1️⃣ ဒေါင်းလုဒ်လုပ်ချင်တဲ့ TikTok သို့မဟုတ် Facebook link ကို ဒီ chat ထဲပို့ပါ။\n"
         "2️⃣ ပြီးရင် ဘယ် Platform က Link လဲဆိုတာကို ရွေးချယ်ပါ။\n"
         "3️⃣ ပြီးမှ Video (သို့မဟုတ်) MP3 ကို ရွေးချယ်ပါ။\n"
         "4️⃣ နှိပ်လိုက်ရင် Bot က ဒေါင်းလုဒ်ဆွဲပြီး ပြန်ပို့ပေးပါလိမ့်မယ်။",
@@ -178,7 +118,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "❓ **အကူအညီ**\n\n"
-        "1. YouTube/TikTok/Facebook link ကို ပို့ပါ\n"
+        "1. TikTok/Facebook link ကို ပို့ပါ\n"
         "2. ဘယ် Platform လဲ ရွေးပါ\n"
         "3. Video / MP3 ရွေးပါ\n"
         "4. Bot က ဒေါင်းလုဒ်ဆွဲပြီး ပြန်ပို့ပေးပါမယ်\n\n"
@@ -197,13 +137,13 @@ async def handle_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = update.message.text.strip()
     if not text.startswith(("http://", "https://")):
-        await update.message.reply_text("❌ ကျေးဇူးပြု၍ မှန်ကန်သော YouTube, TikTok သို့မဟုတ် Facebook link ကို ပို့ပေးပါ။")
+        await update.message.reply_text("❌ ကျေးဇူးပြု၍ မှန်ကန်သော TikTok သို့မဟုတ် Facebook link ကို ပို့ပေးပါ။")
         return
 
     user_links[user_id] = [text]
 
+    # 🚨 YouTube ကို ဖျောက်ထားပါတယ်
     keyboard = [
-        [InlineKeyboardButton("🔴 YouTube Link", callback_data="platform_youtube")],
         [InlineKeyboardButton("🔵 Facebook Link", callback_data="platform_facebook")],
         [InlineKeyboardButton("⚫ TikTok Link", callback_data="platform_tiktok")],
     ]
@@ -249,7 +189,7 @@ async def platform_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
     ]
     
-    platform_names = {"youtube": "YouTube", "facebook": "Facebook", "tiktok": "TikTok"}
+    platform_names = {"facebook": "Facebook", "tiktok": "TikTok"}
     await query.edit_message_text(
         f"✅ Platform: **{platform_names.get(platform, platform)}** ကို ရွေးပြီးပါပြီ။\n\nဘာကို ဒေါင်းလုဒ်လုပ်မလဲ?",
         reply_markup=InlineKeyboardMarkup(keyboard),
@@ -289,13 +229,8 @@ async def process_single_link(context, user_id, url, choice, platform):
 
     async with download_semaphore:
         try:
-            if platform == "youtube":
-                if choice == "video":
-                    cmd = ["yt-dlp", "--js-runtimes", "deno", "--cookies", "cookies.txt", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
-                else:
-                    cmd = ["yt-dlp", "--js-runtimes", "deno", "--cookies", "cookies.txt", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
-            
-            elif platform == "tiktok":
+            # 🚨 TikTok နဲ့ Facebook အတွက်ပဲ ပြင်ထားပါတယ်
+            if platform == "tiktok":
                 if choice == "video":
                     cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
@@ -308,10 +243,9 @@ async def process_single_link(context, user_id, url, choice, platform):
                     cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
             
             else:
-                if choice == "video":
-                    cmd = ["yt-dlp", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
-                else:
-                    cmd = ["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+                # မသိသော Platform အတွက် (ဒါပေမယ့် ဒီကုဒ်မှာ မဖြစ်သင့်ပါဘူး)
+                await context.bot.send_message(chat_id=chat_id, text="❌ Platform မမှန်ကန်ပါ။")
+                return
 
             returncode, stdout, stderr = await run_ytdlp(cmd)
 
@@ -363,9 +297,6 @@ async def process_single_link(context, user_id, url, choice, platform):
 
 # ==================== Main ====================
 def main():
-    # 🚨 Bot မစတင်ခင် Cookie ဖိုင်ကို အရင်ဆောက်မယ်
-    create_cookie_file()
-
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
