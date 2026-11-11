@@ -32,7 +32,7 @@ FILE_TTL_SECONDS = 3600
 
 # ==================== Runtime State ====================
 user_links = defaultdict(list)
-user_platform = {} # ဘယ် Platform ရွေးထားလဲ သိမ်းရန်
+user_platform = {} 
 download_semaphore = asyncio.Semaphore(MAX_CONCURRENT_DOWNLOADS)
 active_tasks = {}
 verified_users = set()
@@ -100,6 +100,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
         [InlineKeyboardButton("📢 Channel", url=CHANNEL_LINK)],
+        [InlineKeyboardButton("📥 Downloaded (ဒေါင်းလုဒ်များ)", callback_data="downloaded_list")], # 🚨 Downloaded Button အသစ်
         [InlineKeyboardButton("👨‍💻 Admin", url=f"https://t.me/{ADMIN_CONTACT.lstrip('@')}")],
     ]
     await update.message.reply_text(
@@ -141,7 +142,7 @@ async def handle_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_links[user_id] = [text]
 
-    # 🚨 Platform ရွေးချယ်ရန် Button များ ပြခြင်း
+    # 🚨 Logo များ ထည့်သွင်းထားသော Platform Button များ
     keyboard = [
         [InlineKeyboardButton("🔴 YouTube Link", callback_data="platform_youtube")],
         [InlineKeyboardButton("🔵 Facebook Link", callback_data="platform_facebook")],
@@ -164,7 +165,12 @@ async def check_join_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.answer("❌ Channel ကို Join မထားသေးပါ။", show_alert=True)
 
 
-# 🚨 Platform ရွေးချယ်တဲ့အခါ အလုပ်လုပ်မယ့် Function
+# 🚨 Downloaded Button ကို နှိပ်လိုက်ရင် အလုပ်လုပ်မယ့် Function (ဥပမာ)
+async def downloaded_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    await query.edit_message_text("📥 သင့်ရဲ့ ဒေါင်းလုဒ်မှတ်တမ်းများ (လောလောဆယ် မရနိုင်သေးပါ)။")
+
 async def platform_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -174,7 +180,6 @@ async def platform_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     user_platform[user_id] = platform
 
-    # Video/MP3 ရွေးချယ်ရန် Button များ ပြခြင်း
     keyboard = [
         [
             InlineKeyboardButton("🎬 Video ဒေါင်းမယ်", callback_data="choice_video"),
@@ -195,7 +200,7 @@ async def choice_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
 
     user_id = query.from_user.id
-    choice = query.data.replace("choice_", "") # "video" သို့မဟုတ် "mp3"
+    choice = query.data.replace("choice_", "")
 
     links = user_links.get(user_id, [])
     platform = user_platform.get(user_id, "unknown")
@@ -222,8 +227,8 @@ async def process_single_link(context, user_id, url, choice, platform):
 
     async with download_semaphore:
         try:
-            # 🚨 ရွေးချယ်လိုက်တဲ့ Platform အလိုက် သီးသန့် Command များ
             if platform == "youtube":
+                # YouTube အတွက် (Cookie မလိုအပ်သေးပါ)
                 if choice == "video":
                     cmd = ["yt-dlp", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
@@ -242,7 +247,6 @@ async def process_single_link(context, user_id, url, choice, platform):
                     cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
             
             else:
-                # မသိသော Platform အတွက်
                 if choice == "video":
                     cmd = ["yt-dlp", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
@@ -251,11 +255,11 @@ async def process_single_link(context, user_id, url, choice, platform):
             returncode, stdout, stderr = await run_ytdlp(cmd)
 
             if returncode != 0:
-                err = stderr[-200:] if stderr else "Unknown error"
+                err = stderr[-300:] if stderr else "Unknown error"
                 await context.bot.send_message(
                     chat_id=chat_id,
                     text=f"❌ ဒေါင်းလုဒ် မအောင်မြင်ပါ။\n\nError: {err}\n\n"
-                         f"💡 ဖြေရှင်းနည်း - VPS ထဲမှာ `pip3 install -U \"yt-dlp[default,curl-cffi]\" --break-system-packages` လုပ်ကြည့်ပါ။"
+                         f"💡 YouTube အတွက် Cookie လိုအပ်နိုင်ပါတယ်။"
                 )
                 return
 
@@ -302,9 +306,9 @@ def main():
     app.add_handler(CommandHandler("help", help_cmd))
     app.add_handler(CallbackQueryHandler(check_join_callback, pattern="^check_join$"))
     
-    # 🚨 Handler အသစ်များ ထည့်သွင်းခြင်း
     app.add_handler(CallbackQueryHandler(platform_handler, pattern="^platform_"))
     app.add_handler(CallbackQueryHandler(choice_handler, pattern="^choice_"))
+    app.add_handler(CallbackQueryHandler(downloaded_list, pattern="^downloaded_list$"))
     
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_link))
 
