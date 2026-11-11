@@ -30,15 +30,6 @@ MAX_CONCURRENT_DOWNLOADS = 3
 MAX_FILE_SIZE_MB = 50
 FILE_TTL_SECONDS = 3600
 
-# ==================== 🚨 Proxy စာရင်း ====================
-PROXY_LIST = [
-    "http://165.154.236.214:80",
-    "http://103.165.245.23:8080",
-    "http://202.53.171.114:80",
-    "http://8.215.25.3:2080",
-    "http://203.174.83.80:3128",
-]
-
 # ==================== 🚨 Cookie စာသားများ ====================
 COOKIE_CONTENT = """# Netscape HTTP Cookie File
 # Generated for yt-dlp
@@ -298,53 +289,37 @@ async def process_single_link(context, user_id, url, choice, platform):
 
     async with download_semaphore:
         try:
-            success = False
-            last_error = ""
+            if platform == "youtube":
+                if choice == "video":
+                    cmd = ["yt-dlp", "--js-runtimes", "deno", "--cookies", "cookies.txt", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                else:
+                    cmd = ["yt-dlp", "--js-runtimes", "deno", "--cookies", "cookies.txt", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+            
+            elif platform == "tiktok":
+                if choice == "video":
+                    cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                else:
+                    cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+            
+            elif platform == "facebook":
+                if choice == "video":
+                    cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--no-warnings", "-o", out_template, url]
+                else:
+                    cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+            
+            else:
+                if choice == "video":
+                    cmd = ["yt-dlp", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                else:
+                    cmd = ["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
 
-            # Proxy တစ်ခုချင်း စမ်းမယ်
-            for proxy in PROXY_LIST:
-                try:
-                    if platform == "youtube":
-                        if choice == "video":
-                            cmd = ["yt-dlp", "--proxy", proxy, "--cookies", "cookies.txt", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
-                        else:
-                            cmd = ["yt-dlp", "--proxy", proxy, "--cookies", "cookies.txt", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
-                    
-                    elif platform == "tiktok":
-                        if choice == "video":
-                            cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
-                        else:
-                            cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
-                    
-                    elif platform == "facebook":
-                        if choice == "video":
-                            cmd = ["yt-dlp", "--impersonate", "chrome", "-f", "best", "--no-warnings", "-o", out_template, url]
-                        else:
-                            cmd = ["yt-dlp", "--impersonate", "chrome", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
-                    
-                    else:
-                        if choice == "video":
-                            cmd = ["yt-dlp", "-f", "best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
-                        else:
-                            cmd = ["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+            returncode, stdout, stderr = await run_ytdlp(cmd)
 
-                    returncode, stdout, stderr = await run_ytdlp(cmd)
-
-                    if returncode == 0:
-                        success = True
-                        break # အောင်မြင်ရင် ကျန်တဲ့ Proxy တွေ မစမ်းတော့ဘူး
-                    else:
-                        last_error = stderr[-300:] if stderr else "Unknown error"
-                        print(f"⚠️ Proxy {proxy} မရပါ။ နောက်တစ်ခု စမ်းမည်။")
-
-                except Exception as e:
-                    last_error = str(e)
-                    print(f"⚠️ Proxy {proxy} Error: {e}")
-
-            if not success:
+            if returncode != 0:
+                err = stderr[-300:] if stderr else "Unknown error"
                 await context.bot.send_message(
                     chat_id=chat_id,
-                    text=f"❌ Proxy အားလုံး မရပါ။\n\nError: {last_error}"
+                    text=f"❌ ဒေါင်းလုဒ် မအောင်မြင်ပါ။\n\nError: {err}"
                 )
                 return
 
