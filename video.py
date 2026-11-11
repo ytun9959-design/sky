@@ -98,9 +98,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_join_prompt(update, context)
         return
 
+    # 🚨 Menu Button အသစ်များ (Admin ကို အောက်ဆုံးမှာ ထားသည်)
     keyboard = [
         [InlineKeyboardButton("📢 Channel", url=CHANNEL_LINK)],
-        [InlineKeyboardButton("📥 Downloaded (ဒေါင်းလုဒ်များ)", callback_data="downloaded_list")], # 🚨 Downloaded Button အသစ်
+        [InlineKeyboardButton("📥 Downloaded (ဒေါင်းလုဒ်များ)", callback_data="downloaded_list")],
         [InlineKeyboardButton("👨‍💻 Admin", url=f"https://t.me/{ADMIN_CONTACT.lstrip('@')}")],
     ]
     await update.message.reply_text(
@@ -142,7 +143,6 @@ async def handle_link(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_links[user_id] = [text]
 
-    # 🚨 Logo များ ထည့်သွင်းထားသော Platform Button များ
     keyboard = [
         [InlineKeyboardButton("🔴 YouTube Link", callback_data="platform_youtube")],
         [InlineKeyboardButton("🔵 Facebook Link", callback_data="platform_facebook")],
@@ -165,11 +165,15 @@ async def check_join_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.answer("❌ Channel ကို Join မထားသေးပါ။", show_alert=True)
 
 
-# 🚨 Downloaded Button ကို နှိပ်လိုက်ရင် အလုပ်လုပ်မယ့် Function (ဥပမာ)
+# 🚨 Downloaded Button ကို နှိပ်လိုက်ရင် Link ထည့်ခိုင်းမည့် စာသား
 async def downloaded_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
-    await query.edit_message_text("📥 သင့်ရဲ့ ဒေါင်းလုဒ်မှတ်တမ်းများ (လောလောဆယ် မရနိုင်သေးပါ)။")
+    await query.edit_message_text(
+        "📥 **ဒေါင်းလုဒ်လုပ်ရန်**\n\n"
+        "ကျေးဇူးပြု၍ ဒေါင်းလုဒ်လုပ်ချင်တဲ့ **Link** ကို ဒီ Chat ထဲမှာ ရိုက်ထည့်ပြီး ပို့ပေးပါ။"
+    )
+
 
 async def platform_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -228,7 +232,6 @@ async def process_single_link(context, user_id, url, choice, platform):
     async with download_semaphore:
         try:
             if platform == "youtube":
-                # YouTube အတွက် (Cookie မလိုအပ်သေးပါ)
                 if choice == "video":
                     cmd = ["yt-dlp", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
@@ -284,7 +287,11 @@ async def process_single_link(context, user_id, url, choice, platform):
 
                 os.remove(fpath)
 
-            await context.bot.send_message(chat_id=chat_id, text="✅ ပြီးပါပြီ!")
+            # 🚨 ဒေါင်းလုဒ်ပြီးတာနဲ့ နောက်တစ်ခု ဆက်လုပ်ဖို့ ခလုတ်လေး ပြပေးမယ်
+            markup = InlineKeyboardMarkup([
+                [InlineKeyboardButton("📥 နောက်တစ်ခု ထပ်ဒေါင်းမည်", callback_data="downloaded_list")]
+            ])
+            await context.bot.send_message(chat_id=chat_id, text="✅ ပြီးပါပြီ! နောက်တစ်ခု ဒေါင်းလိုပါက အောက်က ခလုတ်ကို နှိပ်ပါ။", reply_markup=markup)
 
         except Exception as e:
             await context.bot.send_message(chat_id=chat_id, text=f"❌ Error: {e}")
