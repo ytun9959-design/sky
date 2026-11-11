@@ -30,6 +30,68 @@ MAX_CONCURRENT_DOWNLOADS = 3
 MAX_FILE_SIZE_MB = 50
 FILE_TTL_SECONDS = 3600
 
+# ==================== 🚨 Cookie စာသားများ (ဒီနေရာမှာ ထည့်ထားပါတယ်) ====================
+COOKIE_CONTENT = """# Netscape HTTP Cookie File
+# Generated for yt-dlp
+
+.google.com	TRUE	/verify	TRUE	1810186771	SNID	ANBxh3hwC0Vski-aucdeaDIpfACib7zn1coQNFsdPLQkA1L6nC0ItfKdeP7nP4jCsJO_Kb4CpBDxYtXYY6yEPwYvpsko2FDAi_g
+.mozilla.org	TRUE	/	FALSE	1828935563	_ga_B9CY1C9VBC	GS2.1.s1794375394$o1$g1$t1794375563$j58$l0$h0
+.mozilla.org	TRUE	/	FALSE	1828935418	_ga	GA1.1.1077350213.1794375394
+.google.com	TRUE	/	TRUE	1810186771	NID	CosDCAESvQIBM9Agl5jpeVHNUWfrgZk630Z90Z7YG-h17essjzqVFW6WupDmCnzmZlakeu1ySOKwleJXDaStvUYS0j8RWv6yNFXkhpxusb0gs7joFlwx-H_paxcOrgSwM3o3EvglgA2HvqzEBWEI_u9ciHQhDFo_VjAMk07_7nbkseYiRDLcAefZ6nhSD0DNdAF2IZ1T_Kh9998c4oi8FpwEEq-VtJrv7rd_NYLwPeWGll_lTIct0_Mhn2AJckNFHjQp2I9Y1VzMNRBp1e8QDDAlQuTTc95_F91-MhhFUznyS0MKi8F6MFWdYO8w30kfMrWBfxWmMvDChjRn5OimMmsZja-VQUSalJ5xxcuPtN0Or9_PtusuXm0gnqs76JWYT61Fiy5v36FyIlFs0ejfHJAbQOf8d7QhdXbtGr_idHNjPPuX5ygBMkUBcEpCz_x0WRpQRPRHzEQ1VsqcKsrO5M_mDm9cgi84J5AfSA6BWl4NoHu6kKNbgSmoU9gx4R2P3ccfeRweJnsiSNQj7Qk
+.google.com	TRUE	/	TRUE	1794376007	__Secure-STRP	ABNhA6jkbZip1ViamdFxoA_FdSmr4V1bQKi0XeTgk1b-V83VwIrIyWaSrRBZIHnaazkid6lvdHLyG3q1c_DbDeXRceBLs1ZpJS1P
+.google.com	TRUE	/	FALSE	1809927621	SEARCH_SAMESITE	CgQIoKIB
+.google.com	TRUE	/	TRUE	1809927573	AEC	Aaa9EJqb-zveNASbkjje-QWUteDsIjrJ3sURLMGBuYRAeMLrff3ves-f9Q
+www.google.com	FALSE	/	FALSE	1794376313	DV	k5mWCnQPmzEVcNh6fbLcG-h27-WRHBo
+accounts.google.com	FALSE	/	TRUE	1828935615	__Host-GAPS	1:82kh4TaxeSTkJOBicMlfndwSeES871Cmed9kDNyJcXiHNzAm1Lo_pY5Xkzh71UYs0KLjGalGNBGfRuUOyCTT3CxaVlQrAQ:yelqi8unfPT1cPB7
+accounts.google.com	FALSE	/	TRUE	1796967593	OTZ	8867860_30_30__30_
+.google.com	TRUE	/	FALSE	1828935615	SID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevtAoVzULWnIc8HrFzHIQY1wACgYKAQMSARMSFQHGX2MiNjGd5FTR4agUYBkx5ToffhoVAUF8yKpY6VLwoyyPg-iQNT-Gdsab0076
+.google.com	TRUE	/	TRUE	1828935615	__Secure-1PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevW30sAM1c0i0AR9B0WFxBHgACgYKAVYSARMSFQHGX2MiVPcS3q0nbGZYQEdbHh0pcxoVAUF8yKrMIJfaBDbgzMQadQ4pAAdz0076
+.google.com	TRUE	/	TRUE	1828935615	__Secure-3PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdev2KBLp3CKadtoJj2FyvGroAACgYKAUMSARMSFQHGX2Mi2i5c9xQVVo3dXGX92nxKJBoVAUF8yKp7ejMDnHdEUOEI5kRBM6hw0076
+accounts.google.com	FALSE	/	TRUE	1828935621	LSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZUORIu4uCHBXt-HFJh36YlAACgYKAc0SARMSFQHGX2MisoACAvbb1TVk-v4UjThijRoVAUF8yKqIvRiTjDeNblZlLKITpzlR0076
+accounts.google.com	FALSE	/	TRUE	1828935621	__Host-1PLSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZaHrmsyLd8qTMaCXhrU23yAACgYKAdoSARMSFQHGX2MiEYqmWV5tHNo-bcqxDRl6FBoVAUF8yKqx_5EFT0r08nqfmFSTm1mK0076
+accounts.google.com	FALSE	/	TRUE	1828935621	__Host-3PLSID	s.youtube:g.a000Egnm4GNo95NkJDKjVjm4Ok2Q-CWo-fEAjVZAvcE5t-vvWuxZUQwyl-FQWrZM7a4Z8TGHvAACgYKATgSARMSFQHGX2MirLCvg9wExlpLgtP-t8dQdhoVAUF8yKoSVVjonKPLZOnFs6o31Fml0076
+.google.com	TRUE	/	FALSE	1828935615	HSID	AnctyZHpoNeEJnwtG
+.google.com	TRUE	/	TRUE	1828935615	SSID	AiY3DLuAxu0ysakS8
+.google.com	TRUE	/	FALSE	1828935615	APISID	ZQ-nBH4RG7fx4LEl/AmdCv89Ix-ERTonZc
+.google.com	TRUE	/	TRUE	1828935615	SAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+.google.com	TRUE	/	TRUE	1828935615	__Secure-1PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+.google.com	TRUE	/	TRUE	1828935615	__Secure-3PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+accounts.google.com	FALSE	/	TRUE	1828935616	ACCOUNT_CHOOSER	AFx_qI5MkE6yRGe5DK0JLBoB9btGxNeMpP3I-FpQKh_9s3WpPbmYKAQzrvkfWJmsmrdcJjyGHD5bFGSpV9dUcnANMQY5pFGI2VcmOZysWXjqvYSSPjmvbOeVvVe7lb36vfKvzEIxxfGi
+accounts.google.com	FALSE	/	TRUE	1828935615	SMSV	ADHTe-DSwHsPQTAiuNChGvEczRvKZfIfKzZ110NGOKqFtZwfgHnzw7Dnggc5QwtxaU3TRDWGqbPtrm4M22-nBGDiduEK9-DVcMvYBpdeQJ1U7Hqy9Tty7c4
+.google.com	TRUE	/	FALSE	1825911720	SIDCC	APD_SKEULGGeT_yNksLNSdiYfxCjYQA2pp__Mad8sc93ZSvOB9q73wN2O60rBx0SUZo99Iq0zg
+.google.com	TRUE	/	TRUE	1825911720	__Secure-1PSIDCC	APD_SKEZtykMaTZrkP2m-d3nMd5ij8W7UcL5Q4mMefm454F8N1t6W5voBmw7VOeAqhNcgxNm
+.google.com	TRUE	/	TRUE	1825911720	__Secure-3PSIDCC	APD_SKHt1k0jSGRE5EsQvCFTK-mn3XCc9EnCJfAmGXUyV4lX7XwWgiRWTRup9x9hLUAbmlDQ
+gds.google.com	FALSE	/	TRUE	1796967619	OTZ	8867860_30_30__30_
+.youtube.com	TRUE	/	TRUE	1825911753	__Secure-1PSIDTS	sidts-CjUBnJZzal9i1f_kpxXGaN_Qw2Sa4Q3GaoMiVdVOQ3YiEtuT0d8qQql5YyrwWkBfIHKwDVIP6xAA
+.youtube.com	TRUE	/	TRUE	1825911753	__Secure-3PSIDTS	sidts-CjUBnJZzal9i1f_kpxXGaN_Qw2Sa4Q3GaoMiVdVOQ3YiEtuT0d8qQql5YyrwWkBfIHKwDVIP6xAA
+.youtube.com	TRUE	/	FALSE	1828935621	HSID	A3XZRTu4Qp0yGSDjZ
+.youtube.com	TRUE	/	TRUE	1828935621	SSID	Auic74DNzoRPKiU5L
+.youtube.com	TRUE	/	FALSE	1828935621	APISID	ZQ-nBH4RG7fx4LEl/AmdCv89Ix-ERTonZc
+.youtube.com	TRUE	/	TRUE	1828935621	SAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+.youtube.com	TRUE	/	TRUE	1828935621	__Secure-1PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+.youtube.com	TRUE	/	TRUE	1828935621	__Secure-3PAPISID	2EdiERSP5X5l0uym/Ahc8eamhQeoF1JgbW
+.youtube.com	TRUE	/	FALSE	1828935621	SID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevtAoVzULWnIc8HrFzHIQY1wACgYKAQMSARMSFQHGX2MiNjGd5FTR4agUYBkx5ToffhoVAUF8yKpY6VLwoyyPg-iQNT-Gdsab0076
+.youtube.com	TRUE	/	TRUE	1828935621	__Secure-1PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdevW30sAM1c0i0AR9B0WFxBHgACgYKAVYSARMSFQHGX2MiVPcS3q0nbGZYQEdbHh0pcxoVAUF8yKrMIJfaBDbgzMQadQ4pAAdz0076
+.youtube.com	TRUE	/	TRUE	1828935621	__Secure-3PSID	g.a000Egnm4Cl-lwtJgTEO6eBA8ywo-xuqUsHk2TfaQyHm_kkbIdev2KBLp3CKadtoJj2FyvGroAACgYKAUMSARMSFQHGX2Mi2i5c9xQVVo3dXGX92nxKJBoVAUF8yKp7ejMDnHdEUOEI5kRBM6hw0076
+.youtube.com	TRUE	/	TRUE	1809927740	__Secure-YNID	CtoBCAUSjAEBDB6PDOT_Sedn9thNvINDCv2_ZcadDUGXYMnHreWkcU9vpORrmL4EEYyvqZsZK-EThPjb_4xOEFkdZqwWKP_oA9Cap27GMR_HS4qE7eYF4wLeCMIgxlwJAfVqv5enAPYCt2wGxsdrJIEpMxEGVI1WQIQmVgB64z62ALfX98mVpphk-n0Dw2vzLinslSgFMkUBHFj1au8Cfkt5MEhFt_LreeHdIoBYooQYrRnRWEbjJoJ6S12dAfeD2Gz5JSWnqhrzhY1MWLZoQNZE9gYh99EAUF0Hxg0
+.youtube.com	TRUE	/	FALSE	1825911753	SIDCC	APD_SKFvBsaR48V-_Z8OlZRXtbprGtyKHL-nChbFaLkjwDpbxtLkRDAHuiSNQe5-d2H6Fba3
+.youtube.com	TRUE	/	TRUE	1825911753	__Secure-1PSIDCC	APD_SKFCR5PpuJqHfTa48yJPaVzczek3jWfynfY2WHtrSPaLWNG-F6k1weC2mChILINBHx7yOw
+.youtube.com	TRUE	/	TRUE	1825911753	__Secure-3PSIDCC	APD_SKGMwd5FFm7RAZoFVGrqQkNgwBjr68QB2TNYPZGTIrblDmyRU72gkUiaTWFjB7_tVSLj
+.youtube.com	TRUE	/	TRUE	0	YSC	pk1prS8T7E0
+.youtube.com	TRUE	/	TRUE	1809927749	VISITOR_INFO1_LIVE	q5pXlvGVGc8
+.youtube.com	TRUE	/	TRUE	1809927749	VISITOR_PRIVACY_METADATA	CgJNTRIEGgAgCw%3D%3D
+.youtube.com	TRUE	/	TRUE	1828935749	PREF	f4=4000000&tz=Asia.Yangon
+.youtube.com	TRUE	/	TRUE	1828935748	LOGIN_INFO	AFmmF2swRgIhAN4KHpBKnhZzMnOKdWgsDLp9tCAiyqeqWAER1Dpf60g4AiEAnriTTQBND5dOgWPPgmEFOd2m_T9ayiEe2GIU4BJPLbg:QUQ3MjNmeVVOaVBJQlFEZHJrNkRiQkRiYzFqbHBPMUZHdmdfSDFoZnMxZUZXN05sZktVSnpkNXhobXJyVlJDb01CMFFEaGkwR00yUzN2dlZWVkdGM3QxWTdyR2ZyT2gxZU9FS19wdFd3azN1X1pvUXlIMF95MEtoMnYyU1c4S0IwSnBValBvay1xMV9FS0ptekhmemNzTlhxc1BLSF9vaTVn"""
+
+# 🚨 Cookie ဖိုင်ကို အလိုအလျောက် ဆောက်ပေးမည့် Function
+def create_cookie_file():
+    try:
+        with open("cookies.txt", "w", encoding="utf-8") as f:
+            f.write(COOKIE_CONTENT)
+        print("✅ cookies.txt ဖိုင် ဆောက်ပြီးပါပြီ။")
+    except Exception as e:
+        print(f"⚠️ Cookie ဖိုင် ဆောက်မရပါ: {e}")
+
 # ==================== Runtime State ====================
 user_links = defaultdict(list)
 user_platform = {} 
@@ -98,7 +160,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await send_join_prompt(update, context)
         return
 
-    # 🚨 Menu Button အသစ်များ (Admin ကို အောက်ဆုံးမှာ ထားသည်)
     keyboard = [
         [InlineKeyboardButton("📢 Channel", url=CHANNEL_LINK)],
         [InlineKeyboardButton("📥 Downloaded (ဒေါင်းလုဒ်များ)", callback_data="downloaded_list")],
@@ -165,7 +226,6 @@ async def check_join_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.answer("❌ Channel ကို Join မထားသေးပါ။", show_alert=True)
 
 
-# 🚨 Downloaded Button ကို နှိပ်လိုက်ရင် Link ထည့်ခိုင်းမည့် စာသား
 async def downloaded_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -233,9 +293,9 @@ async def process_single_link(context, user_id, url, choice, platform):
         try:
             if platform == "youtube":
                 if choice == "video":
-                    cmd = ["yt-dlp", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
+                    cmd = ["yt-dlp", "--cookies", "cookies.txt", "-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best", "--merge-output-format", "mp4", "--no-warnings", "-o", out_template, url]
                 else:
-                    cmd = ["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
+                    cmd = ["yt-dlp", "--cookies", "cookies.txt", "-x", "--audio-format", "mp3", "--no-warnings", "-o", out_template, url]
             
             elif platform == "tiktok":
                 if choice == "video":
@@ -261,8 +321,7 @@ async def process_single_link(context, user_id, url, choice, platform):
                 err = stderr[-300:] if stderr else "Unknown error"
                 await context.bot.send_message(
                     chat_id=chat_id,
-                    text=f"❌ ဒေါင်းလုဒ် မအောင်မြင်ပါ။\n\nError: {err}\n\n"
-                         f"💡 YouTube အတွက် Cookie လိုအပ်နိုင်ပါတယ်။"
+                    text=f"❌ ဒေါင်းလုဒ် မအောင်မြင်ပါ။\n\nError: {err}"
                 )
                 return
 
@@ -287,7 +346,6 @@ async def process_single_link(context, user_id, url, choice, platform):
 
                 os.remove(fpath)
 
-            # 🚨 ဒေါင်းလုဒ်ပြီးတာနဲ့ နောက်တစ်ခု ဆက်လုပ်ဖို့ ခလုတ်လေး ပြပေးမယ်
             markup = InlineKeyboardMarkup([
                 [InlineKeyboardButton("📥 နောက်တစ်ခု ထပ်ဒေါင်းမည်", callback_data="downloaded_list")]
             ])
@@ -307,6 +365,9 @@ async def process_single_link(context, user_id, url, choice, platform):
 
 # ==================== Main ====================
 def main():
+    # 🚨 Bot မစတင်ခင် Cookie ဖိုင်ကို အရင်ဆောက်မယ်
+    create_cookie_file()
+
     app = Application.builder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
